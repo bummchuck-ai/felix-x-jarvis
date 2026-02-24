@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Willis Dachdeckerei | Handwerk mit Herz in Gifhorn</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Work+Sans:wght@400;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'serif': ['"Crimson Pro"', 'serif'],
+                        'sans': ['"Work Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        willisGreen: '#14532d', // green-900
+                        willisBrown: '#78350f', // amber-900
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-stone-800 bg-[#fdfbf7]">
+
+    <header class="py-8 px-6">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center border-b border-stone-200 pb-8">
+            <div class="text-center md:text-left mb-6 md:mb-0">
+                <h1 class="font-serif text-4xl font-bold text-willisGreen leading-none">Willis <span class="text-willisBrown italic">Dachdeckerei</span></h1>
+                <p class="text-stone-400 text-sm tracking-widest uppercase mt-1">Ehrliches Handwerk aus Gifhorn</p>
+            </div>
+            <nav class="flex space-x-8 text-sm font-bold uppercase tracking-tighter">
+                <a href="#handwerk" class="hover:text-willisBrown transition">Das Handwerk</a>
+                <a href="#ueber-uns" class="hover:text-willisBrown transition">Über uns</a>
+                <a href="#kontakt" class="hover:text-willisBrown transition">Anrufen</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="py-20 px-6">
+        <div class="container mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div class="order-2 md:order-1">
+                <div class="inline-block bg-willisGreen/10 text-willisGreen px-4 py-1 rounded-full text-sm font-bold mb-6">Willkommen auf dem Dach</div>
+                <h2 class="text-5xl md:text-7xl font-black text-willisGreen mb-8 leading-[0.9]">Handwerk <br>mit <span class="font-serif italic font-normal text-willisBrown">Herz & Verstand.</span></h2>
+                <p class="text-xl text-stone-600 mb-10 leading-relaxed italic">"Wir steigen Ihnen nicht nur aufs Dach, wir passen auch darauf auf. Authentisch, bodenständig und immer für einen Schnack zu haben."</p>
+                <div class="flex gap-4">
+                    <a href="#kontakt" class="bg-willisBrown text-white px-10 py-4 font-black rounded-sm hover:bg-stone-800 transition shadow-xl">Projekt anfragen</a>
+                </div>
+            </div>
+            <div class="order-1 md:order-2">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Dachdecker Handwerk" class="rounded-2xl shadow-2xl grayscale hover:grayscale-0 transition duration-1000">
+                    <div class="absolute -bottom-6 -right-6 bg-willisGreen p-8 text-white rounded-2xl shadow-xl hidden lg:block">
+                        <p class="font-serif italic text-2xl">Seit 1992</p>
+                        <p class="text-xs uppercase tracking-widest opacity-70 text-center">Familienbetrieb</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="handwerk" class="py-24 bg-willisGreen text-stone-50">
+        <div class="container mx-auto px-6">
+            <h2 class="font-serif text-4xl mb-16 text-center italic">Unsere Leistungen am Haus</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-16">
+                <div class="text-center">
+                    <div class="text-willisBrown text-5xl mb-6">⚒</div>
+                    <h3 class="text-2xl font-bold mb-4 uppercase">Eindeckung</h3>
+                    <p class="text-stone-300 leading-relaxed">Ob Tonpfanne, Schiefer oder Reet – wir beherrschen die traditionellen Techniken perfekt.</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-willisBrown text-5xl mb-6">🏠</div>
+                    <h3 class="text-2xl font-bold mb-4 uppercase">Sanierung</h3>
+                    <p class="text-stone-300 leading-relaxed">Wir retten alte Bausubstanz und machen sie fit für die nächsten Jahrzehnte.</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-willisBrown text-5xl mb-6">🪵</div>
+                    <h3 class="text-2xl font-bold mb-4 uppercase">Holzbau</h3>
+                    <p class="text-stone-300 leading-relaxed">Dachstühle, Gauben und Carports aus ehrlichem Holz direkt vom Fachmann.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ueber-uns" class="py-24 px-6">
+        <div class="container mx-auto max-w-4xl bg-stone-100 p-12 md:p-20 rounded-3xl border border-stone-200">
+            <h2 class="text-3xl font-black mb-8 text-willisGreen text-center uppercase">Über Willis Dachdeckerei</h2>
+            <p class="text-lg text-stone-600 leading-relaxed mb-8 text-center">Bei uns gibt es kein Marketing-Blabla. Wir sind Willis Team aus Gifhorn. Wir lieben den Geruch von frischem Holz, die Aussicht von oben und das Gefühl, wenn am Abend alles dicht ist. Bei uns zählt das Wort und der Handschlag noch etwas.</p>
+            <div class="flex justify-center gap-12">
+                <div class="text-center">
+                    <p class="text-willisBrown font-black text-3xl">100%</p>
+                    <p class="text-xs uppercase font-bold text-stone-400">Authentisch</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-willisBrown font-black text-3xl">Lokal</p>
+                    <p class="text-xs uppercase font-bold text-stone-400">In Gifhorn</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galerie" class="py-24 overflow-hidden">
+        <div class="flex flex-wrap gap-4 justify-center">
+            <img src="https://images.unsplash.com/photo-1634007530214-521648a3952f?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="P1" class="w-64 h-64 object-cover rounded shadow-lg hover:rotate-3 transition">
+            <img src="https://images.unsplash.com/photo-1621905252507-b35482cd84b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="P2" class="w-64 h-64 object-cover rounded shadow-lg hover:-rotate-3 transition mt-8">
+            <img src="https://images.unsplash.com/photo-1620055100020-f5713487c659?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="P3" class="w-64 h-64 object-cover rounded shadow-lg hover:rotate-2 transition">
+            <img src="https://images.unsplash.com/photo-1628413993904-94ec04043c40?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="P4" class="w-64 h-64 object-cover rounded shadow-lg hover:-rotate-1 transition mt-4">
+        </div>
+    </section>
+
+    <section id="kontakt" class="py-24 bg-stone-100 text-stone-800">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="font-serif text-5xl mb-6 italic text-willisGreen">Lust auf ein Gespräch?</h2>
+            <p class="text-xl mb-12 text-stone-500 max-w-2xl mx-auto">Rufen Sie uns einfach an oder kommen Sie auf einen Kaffee in der Werkstatt vorbei. Wir beißen nicht.</p>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-12">
+                <div class="bg-white p-10 rounded-2xl shadow-sm border border-stone-200 min-w-[300px]">
+                    <p class="text-stone-400 uppercase text-xs font-bold mb-2">Telefonnummer</p>
+                    <p class="text-3xl font-black text-willisBrown">05371 / 11 22 33</p>
+                </div>
+                <div class="bg-white p-10 rounded-2xl shadow-sm border border-stone-200 min-w-[300px]">
+                    <p class="text-stone-400 uppercase text-xs font-bold mb-2">E-Mail Adresse</p>
+                    <p class="text-xl font-black text-willisGreen">moin@willis-dach.de</p>
+                </div>
+            </div>
+            <div class="mt-16">
+                <p class="text-stone-400 italic">Willis Dachdeckerei | Am Holzweg 3 | 38518 Gifhorn</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-stone-200 text-center">
+        <div class="container mx-auto px-6">
+            <p class="text-xs uppercase tracking-widest text-stone-400">© 2026 Willis Dachdeckerei. Handgemacht mit Liebe in Gifhorn.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sprengel Dachdeckerei | Qualität & Schutz für Ihr Haus in Gifhorn</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        brickRed: '#9a3412', // orange-900 (Ziegelrot)
+                        roofGrey: '#374151', // gray-700
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50">
+
+    <header class="bg-white shadow-md border-t-8 border-brickRed">
+        <div class="container mx-auto px-6 py-6 flex justify-between items-center">
+            <div class="flex flex-col">
+                <span class="text-3xl font-black text-roofGrey leading-none">SPRENGEL</span>
+                <span class="text-xs font-bold text-brickRed tracking-[0.3em] uppercase">Dachdeckerei & Bauklempnerei</span>
+            </div>
+            <nav class="hidden lg:flex space-x-10 font-bold uppercase text-sm tracking-wider">
+                <a href="#dach" class="hover:text-brickRed transition underline decoration-2 underline-offset-4">Das Dach</a>
+                <a href="#qualitaet" class="hover:text-brickRed transition underline decoration-2 underline-offset-4">Qualität</a>
+                <a href="#ueber-uns" class="hover:text-brickRed transition underline decoration-2 underline-offset-4">Über uns</a>
+                <a href="#kontakt" class="bg-roofGrey text-white px-6 py-2 rounded-sm hover:bg-brickRed transition">Kontakt</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="relative h-[70vh] flex items-center overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1635424710928-0544e8512eae?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-roofGrey to-transparent opacity-80"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-2xl text-white">
+                <h1 class="text-5xl md:text-7xl font-black mb-6 uppercase leading-tight">Höchster <span class="text-brickRed">Schutz.</span><br>Beste Qualität.</h1>
+                <p class="text-xl md:text-2xl mb-10 text-gray-200">Wir decken Gifhorn seit Generationen. Ihr Dach in meisterlichen Händen.</p>
+                <div class="flex gap-4">
+                    <a href="#kontakt" class="bg-brickRed hover:bg-red-800 text-white font-bold py-4 px-10 transition shadow-lg">Jetzt beraten lassen</a>
+                    <a href="#dach" class="border-2 border-white text-white font-bold py-4 px-10 hover:bg-white hover:text-roofGrey transition">Unsere Arbeit</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="dach" class="py-24">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="bg-white p-8 shadow-xl border-t-4 border-brickRed">
+                    <div class="text-brickRed mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-black mb-4 uppercase">Dachdeckung</h3>
+                    <p class="text-gray-600">Steildach, Flachdach oder energetische Sanierung. Wir sorgen für die perfekte Hülle.</p>
+                </div>
+                <div class="bg-white p-8 shadow-xl border-t-4 border-brickRed">
+                    <div class="text-brickRed mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-black mb-4 uppercase">Bauklempnerei</h3>
+                    <p class="text-gray-600">Dachrinnen, Fallrohre und Metalleinfassungen aus Kupfer, Zink oder Aluminium.</p>
+                </div>
+                <div class="bg-white p-8 shadow-xl border-t-4 border-brickRed">
+                    <div class="text-brickRed mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-black mb-4 uppercase">Photovoltaik</h3>
+                    <p class="text-gray-600">Wir integrieren moderne Solaranlagen harmonisch und sicher in Ihre Dachfläche.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="qualitaet" class="py-24 bg-roofGrey text-white">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div>
+                <h2 class="text-4xl font-black mb-8 uppercase leading-tight">Ihr Haus verdient den <span class="text-brickRed">besten Schutz.</span></h2>
+                <p class="text-gray-400 mb-8 leading-relaxed">Ein Dach ist mehr als nur Ziegel auf Balken. Es ist die wichtigste Schutzschicht Ihres Zuhauses. Sprengel Dachdeckerei steht für Kompromisslosigkeit bei Material und Ausführung.</p>
+                <div class="space-y-6">
+                    <div class="flex gap-4">
+                        <div class="text-brickRed font-black text-2xl">01.</div>
+                        <div>
+                            <h4 class="font-bold text-xl">Detaillierte Planung</h4>
+                            <p class="text-gray-500 text-sm">Transparente Kosten und Zeitpläne ohne Überraschungen.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="text-brickRed font-black text-2xl">02.</div>
+                        <div>
+                            <h4 class="font-bold text-xl">Meisterhandwerk</h4>
+                            <p class="text-gray-500 text-sm">Ausgebildete Fachkräfte mit jahrelanger Erfahrung.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <img src="https://images.unsplash.com/photo-1628413993904-94ec04043c40?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Roofing 1" class="rounded">
+                <img src="https://images.unsplash.com/photo-1605276373954-0c4a0dac5b12?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Roofing 2" class="rounded mt-12">
+            </div>
+        </div>
+    </section>
+
+    <section id="ueber-uns" class="py-24 bg-white text-center">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <h2 class="text-4xl font-black mb-12 uppercase">Über Sprengel</h2>
+            <div class="text-gray-600 text-lg leading-relaxed space-y-6">
+                <p>Seit über 50 Jahren steht der Name Sprengel in Gifhorn für Zuverlässigkeit im Dachdeckerhandwerk. Was als kleiner Familienbetrieb begann, hat sich zu einem modernen Innungsfachbetrieb entwickelt, der Tradition und Innovation vereint.</p>
+                <p>Unser Herz schlägt für das Handwerk – von der kleinsten Reparatur bis zum kompletten Neubau.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontakt" class="py-24 bg-brickRed text-white">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row gap-16">
+            <div class="md:w-1/2">
+                <h2 class="text-4xl font-black mb-8 uppercase">Starten Sie Ihr Projekt</h2>
+                <p class="text-red-100 mb-12">Wir kommen gerne für eine Erstbesichtigung bei Ihnen in Gifhorn und Umgebung vorbei.</p>
+                <div class="space-y-4">
+                    <p class="text-2xl font-bold">Telefon: 05371 / 88 99 0</p>
+                    <p class="text-xl">E-Mail: info@sprengel-dach.de</p>
+                    <p class="text-red-200">Dachstraße 14, 38518 Gifhorn</p>
+                </div>
+            </div>
+            <div class="md:w-1/2 bg-white p-10 shadow-2xl">
+                <form class="space-y-4 text-roofGrey">
+                    <div class="grid grid-cols-2 gap-4">
+                        <input type="text" placeholder="Name" class="w-full bg-gray-100 p-4 border-none outline-none focus:ring-2 focus:ring-brickRed">
+                        <input type="text" placeholder="Telefon" class="w-full bg-gray-100 p-4 border-none outline-none focus:ring-2 focus:ring-brickRed">
+                    </div>
+                    <input type="email" placeholder="E-Mail" class="w-full bg-gray-100 p-4 border-none outline-none focus:ring-2 focus:ring-brickRed">
+                    <textarea placeholder="Was können wir für Sie tun?" class="w-full bg-gray-100 p-4 border-none outline-none focus:ring-2 focus:ring-brickRed" rows="4"></textarea>
+                    <button class="w-full bg-roofGrey text-white font-black uppercase py-4 hover:bg-brickRed transition">Anfrage senden</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-roofGrey py-12 text-center text-white/50 text-xs font-bold uppercase tracking-widest">
+        <p>&copy; 2026 Dachdeckerei Sprengel | <a href="#" class="hover:text-white">Impressum</a> | <a href="#" class="hover:text-white">Datenschutz</a></p>
+    </footer>
+
+</body>
+</html>
