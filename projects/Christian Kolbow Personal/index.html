@@ -3,26 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Christian Kolbow | PV & REDNER</title>
-    <!-- Tailwind CDN -->
+    <title>Christian Kolbow | PV-Expertise & Freie Reden</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;900&family=Space+Mono&family=Playfair+Display:ital,wght@1,900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;800&family=Space+Mono&family=Playfair+Display:ital,wght@1,700&display=swap');
 
         :root {
             --obsidian: #000000;
             --amber: #FFB800;
+            --soft-white: #f8fafc;
         }
 
         body {
             background-color: var(--obsidian);
-            color: #ffffff;
-            font-family: 'Lexend Deca', sans-serif;
+            color: var(--soft-white);
+            font-family: 'Plus Jakarta Sans', sans-serif;
             margin: 0;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
 
+        /* Redesign: Toned down boldness, more elegance */
         .hero-split {
             display: flex;
             flex-direction: column;
@@ -38,229 +39,218 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 60px 30px;
+            padding: 40px;
             position: relative;
-            overflow: hidden;
-            transition: all 0.5s ease;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .pane-expert {
-            background: linear-gradient(135deg, #0f172a 0%, #000 100%);
-            border-bottom: 4px solid var(--amber);
+            background: linear-gradient(to bottom right, #020617, #000);
+            border-bottom: 1px solid rgba(255, 184, 0, 0.2);
         }
 
         @media (min-width: 768px) {
-            .pane-expert { border-bottom: none; border-right: 4px solid var(--amber); }
+            .pane-expert { border-bottom: none; border-right: 1px solid rgba(255, 184, 0, 0.2); }
         }
 
         .pane-speaker {
-            background: linear-gradient(135deg, #1c1917 0%, #000 100%);
+            background: linear-gradient(to bottom left, #0c0a09, #000);
         }
 
-        .bold-title {
-            font-weight: 900;
-            font-size: 4rem;
-            line-height: 0.85;
+        .refined-title {
+            font-weight: 800;
+            font-size: 3rem;
+            line-height: 1;
             text-transform: uppercase;
-            letter-spacing: -3px;
+            letter-spacing: -1px;
             margin-bottom: 1.5rem;
+        }
+
+        .refined-title-serif {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
             font-style: italic;
+            font-size: 3rem;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            text-transform: none;
         }
 
-        @media (max-width: 640px) {
-            .bold-title { font-size: 3rem; }
-        }
-
-        .tag {
+        .tag-minimal {
             font-family: 'Space Mono', monospace;
-            font-size: 10px;
+            font-size: 9px;
             text-transform: uppercase;
             letter-spacing: 4px;
             color: var(--amber);
-            margin-bottom: 15px;
-            display: block;
-            font-weight: bold;
+            margin-bottom: 12px;
+            opacity: 0.8;
         }
 
-        .btn-obsidian {
+        .btn-minimal {
             display: inline-block;
-            padding: 20px 40px;
-            background-color: var(--amber);
-            color: #000;
-            font-weight: 900;
-            font-size: 14px;
+            padding: 16px 32px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.03);
+            color: #fff;
+            font-weight: 600;
+            font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 2px;
             text-decoration: none;
-            box-shadow: 0 10px 30px rgba(255, 184, 0, 0.3);
-            transition: all 0.3s;
-            text-align: center;
+            transition: all 0.4s;
+            margin-top: 1rem;
         }
 
-        .btn-obsidian:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(255, 184, 0, 0.5);
-            background-color: #fff;
-        }
-
-        .section-header {
-            border-bottom: 1px solid #222;
-            padding-bottom: 20px;
-            margin-bottom: 40px;
-        }
-
-        .card-obsidian {
-            background: #0a0a0a;
-            border: 1px solid #1a1a1a;
-            padding: 40px;
-            border-radius: 0;
-            transition: all 0.3s;
-        }
-
-        .card-obsidian:hover {
+        .btn-minimal:hover {
             border-color: var(--amber);
-            background: #111;
-        }
-
-        .card-obsidian h3 {
-            font-weight: 900;
-            text-transform: uppercase;
-            font-size: 18px;
             color: var(--amber);
-            margin-bottom: 15px;
-            letter-spacing: 1px;
+            background: rgba(255, 184, 0, 0.05);
         }
 
-        .card-obsidian p {
+        .service-block {
+            padding: 100px 24px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        @media (min-width: 768px) {
+            .grid-layout { grid-template-columns: 1fr 1fr 1fr; }
+        }
+
+        .feature-item {
+            border-left: 1px solid rgba(255, 184, 0, 0.3);
+            padding-left: 24px;
+        }
+
+        .feature-item h3 {
+            font-weight: 800;
             font-size: 14px;
-            color: #888;
-            line-height: 1.6;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            color: #fff;
         }
 
-        .nav-obsidian {
+        .feature-item p {
+            font-size: 14px;
+            color: #71717a;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        .nav-glass {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 25px;
+            padding: 24px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 100;
-            background: rgba(0,0,0,0.9);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid #111;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(15px);
         }
 
         .nav-logo {
-            font-weight: 900;
-            font-size: 18px;
-            letter-spacing: -1px;
-            font-style: italic;
-        }
-
-        .footer-obsidian {
-            background: #000;
-            padding: 60px 20px;
-            text-align: center;
-            border-top: 1px solid #111;
+            font-weight: 800;
+            font-size: 16px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
     </style>
 </head>
 <body>
 
-    <nav class="nav-obsidian">
-        <div class="nav-logo text-white uppercase">Christian <span class="text-amber-500">Kolbow</span></div>
-        <div class="hidden md:flex gap-6 text-[10px] font-bold tracking-widest text-zinc-500">
-            <span>CORE_V4.0</span>
-            <span class="text-emerald-500">SYSTEM_READY</span>
-        </div>
+    <nav class="nav-glass">
+        <div class="nav-logo">Christian <span style="color: var(--amber)">Kolbow</span></div>
+        <div style="font-family: 'Space Mono', monospace; font-size: 8px; letter-spacing: 2px; opacity: 0.4;">EST. 2026 // ROETGESBUETTEL</div>
     </nav>
 
     <div class="hero-split">
         
-        <!-- SIDE A: THE EXPERT -->
+        <!-- PV-EXPERTE -->
         <div class="pane pane-expert">
-            <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&q=80')] bg-cover"></div>
-            <div class="relative z-10">
-                <span class="tag">[ Sector: Energy ]</span>
-                <h1 class="bold-title text-white">DER<br>EXPERTE</h1>
-                <p class="text-zinc-400 max-w-sm text-sm leading-relaxed mb-8">
-                    Hochwertige Photovoltaik-Beratung für die Region Gifhorn. Ehrlich geplant, technisch perfekt, regional verwurzelt.
-                </p>
-                <a href="#solar" class="btn-obsidian">Protokoll_Init</a>
-            </div>
+            <span class="tag-minimal">[ Sector_01: Photovoltaik ]</span>
+            <h1 class="refined-title">Der<br>Experte</h1>
+            <p style="font-size: 15px; color: #52525b; max-width: 340px; line-height: 1.6;">
+                Unabhängige PV-Beratung für IEE Solar. Fokus auf Gifhorn, Wolfsburg und Braunschweig. Planung mit Verstand.
+            </p>
+            <a href="#solar" class="btn-minimal">Expertise_Einsehen</a>
         </div>
 
-        <!-- SIDE B: THE SPEAKER -->
+        <!-- FREIER REDNER -->
         <div class="pane pane-speaker">
-            <div class="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&q=80')] bg-cover"></div>
             <div class="relative z-10 md:text-right md:items-end flex flex-col">
-                <span class="tag" style="color: #fff; opacity: 0.5;">[ Sector: Words ]</span>
-                <h1 class="bold-title text-white" style="font-family: 'Playfair Display', serif; text-transform: none; letter-spacing: -1px;">Der<br>Redner</h1>
-                <p class="text-zinc-400 max-w-sm text-sm leading-relaxed mb-8">
-                    Würdevolle Abschiede und individuelle Trauungen. Emotionale Begleitung mit Herz und Verstand in Rötgesbüttel.
+                <span class="tag-minimal" style="color: #fff; opacity: 0.4;">[ Sector_02: Zeremonie ]</span>
+                <h1 class="refined-title-serif">Der<br>Redner</h1>
+                <p style="font-size: 15px; color: #52525b; max-width: 340px; line-height: 1.6;">
+                    Worte für die Ewigkeit. Würdevolle Begleitung von Trauerfeiern und Hochzeiten im Landkreis Gifhorn.
                 </p>
-                <a href="#reden" class="btn-obsidian" style="background-color: #fff;">Kontakt_Sync</a>
+                <a href="#reden" class="btn-minimal">Portfolio_Scannen</a>
             </div>
         </div>
 
     </div>
 
-    <!-- Details Solar -->
-    <section id="solar" class="px-6 py-24 max-w-7xl mx-auto">
-        <div class="section-header">
-            <span class="tag">01 // IEE-SOLAR GIFHORN</span>
-            <h2 class="bold-title text-3xl">Expertise & Planung</h2>
+    <!-- Solar Services -->
+    <section id="solar" class="service-block">
+        <div style="margin-bottom: 60px;">
+            <span class="tag-minimal">Leistungen // Erneuerbare Energien</span>
+            <h2 class="refined-title" style="font-size: 2.2rem; margin-top: 10px;">IEE-Solar Gifhorn</h2>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="card-obsidian">
-                <h3>Ehrliche Beratung</h3>
-                <p>Keine leeren Versprechen. Ich analysiere Ihr Dach und sage Ihnen klipp und klar, was sich für Sie lohnt.</p>
+        <div class="grid-layout">
+            <div class="feature-item">
+                <h3>Unabhängige Beratung</h3>
+                <p>Ehrliche Analyse Ihres Energiebedarfs. Wir planen keine Show, sondern eine Anlage, die sich für Sie rechnet.</p>
             </div>
-            <div class="card-obsidian">
-                <h3>Regionale Kraft</h3>
-                <p>Mein Fokus liegt auf Gifhorn, Wolfsburg und Braunschweig. Kurze Wege, persönlicher Kontakt, echtes Handwerk.</p>
+            <div class="feature-item">
+                <h3>Regionale Präsenz</h3>
+                <p>Direkt aus Rötgesbüttel für die Region Gifhorn, Braunschweig und Wolfsburg. Kurze Wege, echtes Handwerk.</p>
             </div>
-            <div class="card-obsidian">
-                <h3>High-End Technik</h3>
-                <p>Wir nutzen nur Komponenten, die den höchsten Standards entsprechen – langlebig und effizient.</p>
+            <div class="feature-item">
+                <h3>Technische Planung</h3>
+                <p>Individuelle Auslegung modernster Komponenten für maximale Effizienz und Langlebigkeit Ihrer Energiewende.</p>
             </div>
         </div>
     </section>
 
-    <!-- Details Reden -->
-    <section id="reden" class="px-6 py-24 max-w-7xl mx-auto border-t border-zinc-900">
-        <div class="section-header md:text-right">
-            <span class="tag">02 // ZEREMONIEN</span>
-            <h2 class="bold-title text-3xl" style="font-family: 'Playfair Display', serif; text-transform: none;">Worte, die bewegen</h2>
+    <!-- Speaker Services -->
+    <section id="reden" class="service-block" style="background: #050505; border-top: 1px solid rgba(255,255,255,0.02);">
+        <div style="margin-bottom: 60px;" class="md:text-right">
+            <span class="tag-minimal">Leistungen // Freie Reden</span>
+            <h2 class="refined-title-serif" style="font-size: 2.2rem; margin-top: 10px;">Emotionale Begleitung</h2>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="card-obsidian">
-                <h3>Freie Trauungen</h3>
-                <p>Ihre Liebe verdient eine Zeremonie, die so einzigartig ist wie Ihre Geschichte. Persönlich und unvergesslich.</p>
+        <div class="grid-layout">
+            <div class="feature-item" style="border-left-color: rgba(255,255,255,0.1);">
+                <h3>Würdevolle Trauerfeiern</h3>
+                <p>Ein persönlicher Abschied, der das Leben ehrt und Worte des Trostes findet. Respektvoll und einfühlsam gestaltet.</p>
             </div>
-            <div class="card-obsidian">
-                <h3>Würdevoller Abschied</h3>
-                <p>Trauerfeiern, die den Menschen ehren und den Hinterbliebenen Trost spenden. Mit Empathie und Respekt.</p>
+            <div class="feature-item" style="border-left-color: rgba(255,255,255,0.1);">
+                <h3>Individuelle Trauungen</h3>
+                <p>Freie Zeremonien, die Ihre Liebe feiern – fernab von Konventionen, so einzigartig wie Ihre gemeinsame Geschichte.</p>
             </div>
-            <div class="card-obsidian">
+            <div class="feature-item" style="border-left-color: rgba(255,255,255,0.1);">
                 <h3>Willkommensfeste</h3>
-                <p>Ein Fest für das Leben. Begrüßen Sie das neue Familienmitglied mit einer herzlichen und freien Zeremonie.</p>
+                <p>Ein herzliches Willkommen für das neue Leben. Kinder-Willkommensfeste als besonderer Moment für die ganze Familie.</p>
             </div>
         </div>
     </section>
 
-    <!-- Final CTA -->
-    <section class="bg-amber-500 py-32 text-center px-6">
-        <h2 class="text-black font-black italic text-5xl md:text-7xl uppercase tracking-tighter mb-8 leading-none">Bereit für den<br>nächsten Schritt?</h2>
-        <a href="mailto:kontakt@christian-kolbow.de" class="inline-block bg-black text-white font-black py-6 px-12 uppercase italic tracking-widest hover:bg-zinc-800 transition-all">Nachricht_Senden</a>
-    </section>
-
-    <footer class="footer-obsidian">
-        <div class="text-[10px] text-zinc-600 font-bold uppercase tracking-[0.4em]">
-            © 2026 // Christian Kolbow // Rötgesbüttel // Deploy_ID: JARVIS_V4
+    <footer style="padding: 100px 40px; text-align: center; background: #000;">
+        <div style="margin-bottom: 40px;">
+            <p style="font-family: 'Space Mono', monospace; font-size: 10px; color: var(--amber); letter-spacing: 2px;">BEREIT FÜR EIN GESPRAECH?</p>
+            <a href="mailto:kontakt@christian-kolbow.de" style="font-weight: 800; font-size: 24px; color: #fff; text-decoration: none; border-bottom: 1px solid var(--amber);">kontakt@christian-kolbow.de</a>
+        </div>
+        <div style="font-size: 8px; color: #3f3f46; letter-spacing: 3px; uppercase;">
+            © 2026 // CHRISTIAN KOLBOW // DESIGN_BY_JARVIS
         </div>
     </footer>
 
