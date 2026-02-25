@@ -1,258 +1,247 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Christian Kolbow | PV-Expertise & Freie Reden</title>
+    <title>Christian Kolbow | Redner & PV-Experte</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        stone: {
+                            50: '#fafaf9',
+                            100: '#f5f5f4',
+                            200: '#e7e5e4',
+                            800: '#292524',
+                        },
+                        solar: {
+                            blue: '#0ea5e9', // Sky-500
+                            light: '#f0f9ff', // Sky-50
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;800&family=Space+Mono&family=Playfair+Display:ital,wght@1,700&display=swap');
-
-        :root {
-            --obsidian: #000000;
-            --amber: #FFB800;
-            --soft-white: #f8fafc;
+        /* Hide Scrollbar for horizontally scrolling areas */
+        .hide-scroll::-webkit-scrollbar {
+            display: none;
         }
-
-        body {
-            background-color: var(--obsidian);
-            color: var(--soft-white);
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            margin: 0;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
-
-        /* Redesign: Toned down boldness, more elegance */
-        .hero-split {
-            display: flex;
-            flex-direction: column;
-            min-height: 100dvh;
-        }
-
-        @media (min-width: 768px) {
-            .hero-split { flex-direction: row; }
-        }
-
-        .pane {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 40px;
-            position: relative;
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .pane-expert {
-            background: linear-gradient(to bottom right, #020617, #000);
-            border-bottom: 1px solid rgba(255, 184, 0, 0.2);
-        }
-
-        @media (min-width: 768px) {
-            .pane-expert { border-bottom: none; border-right: 1px solid rgba(255, 184, 0, 0.2); }
-        }
-
-        .pane-speaker {
-            background: linear-gradient(to bottom left, #0c0a09, #000);
-        }
-
-        .refined-title {
-            font-weight: 800;
-            font-size: 3rem;
-            line-height: 1;
-            text-transform: uppercase;
-            letter-spacing: -1px;
-            margin-bottom: 1.5rem;
-        }
-
-        .refined-title-serif {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            font-style: italic;
-            font-size: 3rem;
-            line-height: 1;
-            margin-bottom: 1.5rem;
-            text-transform: none;
-        }
-
-        .tag-minimal {
-            font-family: 'Space Mono', monospace;
-            font-size: 9px;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            color: var(--amber);
-            margin-bottom: 12px;
-            opacity: 0.8;
-        }
-
-        .btn-minimal {
-            display: inline-block;
-            padding: 16px 32px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            background: rgba(255, 255, 255, 0.03);
-            color: #fff;
-            font-weight: 600;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-decoration: none;
-            transition: all 0.4s;
-            margin-top: 1rem;
-        }
-
-        .btn-minimal:hover {
-            border-color: var(--amber);
-            color: var(--amber);
-            background: rgba(255, 184, 0, 0.05);
-        }
-
-        .service-block {
-            padding: 100px 24px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .grid-layout {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-        }
-
-        @media (min-width: 768px) {
-            .grid-layout { grid-template-columns: 1fr 1fr 1fr; }
-        }
-
-        .feature-item {
-            border-left: 1px solid rgba(255, 184, 0, 0.3);
-            padding-left: 24px;
-        }
-
-        .feature-item h3 {
-            font-weight: 800;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-            color: #fff;
-        }
-
-        .feature-item p {
-            font-size: 14px;
-            color: #71717a;
-            line-height: 1.7;
-            font-weight: 400;
-        }
-
-        .nav-glass {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 24px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            background: rgba(0,0,0,0.7);
-            backdrop-filter: blur(15px);
-        }
-
-        .nav-logo {
-            font-weight: 800;
-            font-size: 16px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+        .hide-scroll {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
     </style>
 </head>
-<body>
+<body class="bg-stone-50 text-stone-800 antialiased">
 
-    <nav class="nav-glass">
-        <div class="nav-logo">Christian <span style="color: var(--amber)">Kolbow</span></div>
-        <div style="font-family: 'Space Mono', monospace; font-size: 8px; letter-spacing: 2px; opacity: 0.4;">EST. 2026 // ROETGESBUETTEL</div>
-    </nav>
-
-    <div class="hero-split">
+    <!-- HERO: PERSONAL BRAND -->
+    <header class="relative h-[85vh] flex flex-col justify-end p-8 overflow-hidden bg-stone-200">
+        <!-- Placeholder Image Background -->
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80')] bg-cover bg-center grayscale opacity-80"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-stone-900/90 via-stone-900/20 to-transparent"></div>
         
-        <!-- PV-EXPERTE -->
-        <div class="pane pane-expert">
-            <span class="tag-minimal">[ Sector_01: Photovoltaik ]</span>
-            <h1 class="refined-title">Der<br>Experte</h1>
-            <p style="font-size: 15px; color: #52525b; max-width: 340px; line-height: 1.6;">
-                Unabhängige PV-Beratung für IEE Solar. Fokus auf Gifhorn, Wolfsburg und Braunschweig. Planung mit Verstand.
+        <div class="relative z-10 max-w-lg animate-fade-in-up">
+            <span class="text-white/80 uppercase tracking-[0.3em] text-xs font-semibold mb-2 block">Rötgesbüttel</span>
+            <h1 class="text-5xl md:text-7xl text-white font-serif italic mb-4 leading-tight">Christian<br>Kolbow</h1>
+            <p class="text-stone-300 text-lg leading-relaxed max-w-sm mb-8">
+                Zwei Leidenschaften. Ein Mensch.<br>
+                Ihr Begleiter für die emotionalen Momente und die nachhaltige Zukunft.
             </p>
-            <a href="#solar" class="btn-minimal">Expertise_Einsehen</a>
-        </div>
-
-        <!-- FREIER REDNER -->
-        <div class="pane pane-speaker">
-            <div class="relative z-10 md:text-right md:items-end flex flex-col">
-                <span class="tag-minimal" style="color: #fff; opacity: 0.4;">[ Sector_02: Zeremonie ]</span>
-                <h1 class="refined-title-serif">Der<br>Redner</h1>
-                <p style="font-size: 15px; color: #52525b; max-width: 340px; line-height: 1.6;">
-                    Worte für die Ewigkeit. Würdevolle Begleitung von Trauerfeiern und Hochzeiten im Landkreis Gifhorn.
-                </p>
-                <a href="#reden" class="btn-minimal">Portfolio_Scannen</a>
+            <div class="flex gap-4">
+                <a href="#redner" class="px-6 py-3 bg-white text-stone-900 font-bold rounded-full text-sm hover:bg-stone-200 transition">Freier Redner ↓</a>
+                <a href="#solar" class="px-6 py-3 border border-white text-white font-bold rounded-full text-sm hover:bg-white/10 transition">PV-Experte ↓</a>
             </div>
         </div>
+    </header>
 
-    </div>
-
-    <!-- Solar Services -->
-    <section id="solar" class="service-block">
-        <div style="margin-bottom: 60px;">
-            <span class="tag-minimal">Leistungen // Erneuerbare Energien</span>
-            <h2 class="refined-title" style="font-size: 2.2rem; margin-top: 10px;">IEE-Solar Gifhorn</h2>
+    <!-- SECTION 1: DER REDNER (Warm, Emotional) -->
+    <section id="redner" class="py-20 bg-stone-50">
+        <div class="px-6 mb-8">
+            <span class="text-amber-600 font-serif italic text-xl">Emotion & Würde</span>
+            <h2 class="text-4xl font-bold text-stone-800 mt-2 mb-4">Der Freie Redner</h2>
+            <p class="text-stone-600 leading-relaxed max-w-md">
+                Ob Abschied oder Neubeginn – ich finde die Worte, die im Herzen bleiben. Individuell, persönlich und ohne steife Floskeln.
+            </p>
         </div>
-        
-        <div class="grid-layout">
-            <div class="feature-item">
-                <h3>Unabhängige Beratung</h3>
-                <p>Ehrliche Analyse Ihres Energiebedarfs. Wir planen keine Show, sondern eine Anlage, die sich für Sie rechnet.</p>
+
+        <!-- Horizontal Scroll Container -->
+        <div class="flex overflow-x-auto gap-6 px-6 pb-8 hide-scroll snap-x snap-mandatory">
+            
+            <!-- Card 1: Trauer -->
+            <div class="min-w-[85vw] md:min-w-[400px] snap-center bg-white p-8 rounded-2xl shadow-sm border border-stone-100 flex flex-col justify-between h-[400px]">
+                <div>
+                    <div class="w-12 h-12 bg-stone-100 rounded-full flex items-center justify-center mb-6 text-2xl">🕯️</div>
+                    <h3 class="text-2xl font-serif font-bold mb-3">Trauerfeiern</h3>
+                    <p class="text-stone-500 leading-relaxed">
+                        Ein Abschied, der das Leben feiert. Ich erzähle die Geschichte des Verstorbenen so, wie er war. Authentisch, liebevoll und tröstend für die Hinterbliebenen.
+                    </p>
+                </div>
+                <div class="mt-6 pt-6 border-t border-stone-100">
+                    <span class="text-xs uppercase tracking-widest text-stone-400">Begleitung in schweren Stunden</span>
+                </div>
             </div>
-            <div class="feature-item">
-                <h3>Regionale Präsenz</h3>
-                <p>Direkt aus Rötgesbüttel für die Region Gifhorn, Braunschweig und Wolfsburg. Kurze Wege, echtes Handwerk.</p>
+
+            <!-- Card 2: Trauung -->
+            <div class="min-w-[85vw] md:min-w-[400px] snap-center bg-white p-8 rounded-2xl shadow-sm border border-stone-100 flex flex-col justify-between h-[400px]">
+                <div>
+                    <div class="w-12 h-12 bg-amber-50 rounded-full flex items-center justify-center mb-6 text-2xl">💍</div>
+                    <h3 class="text-2xl font-serif font-bold mb-3">Freie Trauungen</h3>
+                    <p class="text-stone-500 leading-relaxed">
+                        Eure Liebe, eure Regeln. Eine Zeremonie, die zu 100% zu euch passt. Ob im Garten, in der Scheune oder am See – ich mache euren Moment unvergesslich.
+                    </p>
+                </div>
+                <div class="mt-6 pt-6 border-t border-stone-100">
+                    <span class="text-xs uppercase tracking-widest text-stone-400">Ja-Wort mit Herz</span>
+                </div>
             </div>
-            <div class="feature-item">
-                <h3>Technische Planung</h3>
-                <p>Individuelle Auslegung modernster Komponenten für maximale Effizienz und Langlebigkeit Ihrer Energiewende.</p>
+
+            <!-- Card 3: Willkommen -->
+            <div class="min-w-[85vw] md:min-w-[400px] snap-center bg-white p-8 rounded-2xl shadow-sm border border-stone-100 flex flex-col justify-between h-[400px]">
+                <div>
+                    <div class="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center mb-6 text-2xl">🌱</div>
+                    <h3 class="text-2xl font-serif font-bold mb-3">Willkommensfeste</h3>
+                    <p class="text-stone-500 leading-relaxed">
+                        Für die kleinen Wunder. Eine weltliche Alternative zur Taufe, um das neue Leben im Kreis der Familie und Freunde willkommen zu heißen.
+                    </p>
+                </div>
+                <div class="mt-6 pt-6 border-t border-stone-100">
+                    <span class="text-xs uppercase tracking-widest text-stone-400">Start ins Leben</span>
+                </div>
             </div>
+
+        </div>
+
+        <div class="px-6 mt-4">
+            <a href="#contact" class="block w-full py-4 bg-stone-800 text-white text-center rounded-xl font-bold tracking-wide hover:bg-stone-900 transition shadow-lg shadow-stone-200">
+                Termin anfragen
+            </a>
         </div>
     </section>
 
-    <!-- Speaker Services -->
-    <section id="reden" class="service-block" style="background: #050505; border-top: 1px solid rgba(255,255,255,0.02);">
-        <div style="margin-bottom: 60px;" class="md:text-right">
-            <span class="tag-minimal">Leistungen // Freie Reden</span>
-            <h2 class="refined-title-serif" style="font-size: 2.2rem; margin-top: 10px;">Emotionale Begleitung</h2>
+    <!-- SECTION 2: IEE SOLAR (Clean, Tech) -->
+    <section id="solar" class="py-20 bg-white relative overflow-hidden">
+        <!-- Decoration -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-sky-50 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+
+        <div class="px-6 mb-8 relative z-10">
+            <span class="text-sky-600 font-sans font-bold text-sm uppercase tracking-widest">IEE Solar Gifhorn</span>
+            <h2 class="text-4xl font-bold text-slate-900 mt-2 mb-4">Der PV-Experte</h2>
+            <p class="text-slate-500 leading-relaxed max-w-md">
+                Unabhängig. Regional. Ehrlich. Ich plane Ihre Photovoltaik-Anlage so, dass sie sich für Sie lohnt – nicht nur für den Verkäufer.
+            </p>
         </div>
-        
-        <div class="grid-layout">
-            <div class="feature-item" style="border-left-color: rgba(255,255,255,0.1);">
-                <h3>Würdevolle Trauerfeiern</h3>
-                <p>Ein persönlicher Abschied, der das Leben ehrt und Worte des Trostes findet. Respektvoll und einfühlsam gestaltet.</p>
+
+        <!-- Horizontal Scroll Container -->
+        <div class="flex overflow-x-auto gap-6 px-6 pb-8 hide-scroll snap-x snap-mandatory relative z-10">
+            
+            <!-- Card 1: Planung -->
+            <div class="min-w-[85vw] md:min-w-[400px] snap-center bg-sky-50 p-8 rounded-2xl border border-sky-100 flex flex-col justify-between h-[350px]">
+                <div>
+                    <h3 class="text-xl font-bold text-sky-900 mb-2">Ehrliche Planung</h3>
+                    <div class="w-12 h-1 bg-sky-500 mb-4 rounded-full"></div>
+                    <p class="text-slate-600">
+                        Keine Pauschalangebote. Wir analysieren Ihr Dach, Ihren Verbrauch und Ihre Wünsche. Sie bekommen eine realistische Wirtschaftlichkeitsberechnung.
+                    </p>
+                </div>
+                <div class="flex justify-end">
+                    <span class="text-6xl font-black text-sky-200/50">01</span>
+                </div>
             </div>
-            <div class="feature-item" style="border-left-color: rgba(255,255,255,0.1);">
-                <h3>Individuelle Trauungen</h3>
-                <p>Freie Zeremonien, die Ihre Liebe feiern – fernab von Konventionen, so einzigartig wie Ihre gemeinsame Geschichte.</p>
+
+            <!-- Card 2: Region -->
+            <div class="min-w-[85vw] md:min-w-[400px] snap-center bg-sky-50 p-8 rounded-2xl border border-sky-100 flex flex-col justify-between h-[350px]">
+                <div>
+                    <h3 class="text-xl font-bold text-sky-900 mb-2">Hier zu Hause</h3>
+                    <div class="w-12 h-1 bg-sky-500 mb-4 rounded-full"></div>
+                    <p class="text-slate-600">
+                        Mein Fokus liegt auf <strong>Gifhorn, Wolfsburg und Braunschweig</strong>. Ich bin kein Callcenter-Agent, sondern Ihr Nachbar aus Rötgesbüttel. Kurze Wege, schnelle Hilfe.
+                    </p>
+                </div>
+                <div class="flex justify-end">
+                    <span class="text-6xl font-black text-sky-200/50">02</span>
+                </div>
             </div>
-            <div class="feature-item" style="border-left-color: rgba(255,255,255,0.1);">
-                <h3>Willkommensfeste</h3>
-                <p>Ein herzliches Willkommen für das neue Leben. Kinder-Willkommensfeste als besonderer Moment für die ganze Familie.</p>
+
+            <!-- Card 3: Technik -->
+            <div class="min-w-[85vw] md:min-w-[400px] snap-center bg-sky-50 p-8 rounded-2xl border border-sky-100 flex flex-col justify-between h-[350px]">
+                <div>
+                    <h3 class="text-xl font-bold text-sky-900 mb-2">Top Technik</h3>
+                    <div class="w-12 h-1 bg-sky-500 mb-4 rounded-full"></div>
+                    <p class="text-slate-600">
+                        IEE Solar verbaut nur Komponenten, denen wir vertrauen. Langlebige Module, intelligente Speicher und robuste Wechselrichter für maximale Unabhängigkeit.
+                    </p>
+                </div>
+                <div class="flex justify-end">
+                    <span class="text-6xl font-black text-sky-200/50">03</span>
+                </div>
             </div>
+
+        </div>
+
+        <div class="px-6 mt-4 relative z-10">
+            <a href="#contact" class="block w-full py-4 border-2 border-sky-900 text-sky-900 text-center rounded-xl font-bold tracking-wide hover:bg-sky-900 hover:text-white transition">
+                Beratung buchen
+            </a>
         </div>
     </section>
 
-    <footer style="padding: 100px 40px; text-align: center; background: #000;">
-        <div style="margin-bottom: 40px;">
-            <p style="font-family: 'Space Mono', monospace; font-size: 10px; color: var(--amber); letter-spacing: 2px;">BEREIT FÜR EIN GESPRAECH?</p>
-            <a href="mailto:kontakt@christian-kolbow.de" style="font-weight: 800; font-size: 24px; color: #fff; text-decoration: none; border-bottom: 1px solid var(--amber);">kontakt@christian-kolbow.de</a>
+    <!-- CONTACT & MAP -->
+    <section id="contact" class="py-20 bg-stone-900 text-white">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-serif italic mb-2">Lassen Sie uns reden.</h2>
+                <p class="text-stone-400">Ob PV-Projekt oder Lebensfeier – ich bin für Sie da.</p>
+            </div>
+
+            <!-- Contact Grid -->
+            <div class="grid md:grid-cols-2 gap-12 mb-12">
+                <div class="space-y-6">
+                    <a href="tel:+49123456789" class="flex items-center p-4 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition">
+                        <span class="mr-4 text-2xl">📞</span>
+                        <div>
+                            <div class="text-xs text-stone-400 uppercase tracking-widest">Telefon</div>
+                            <div class="font-bold">+49 (0) 123 456 789</div>
+                        </div>
+                    </a>
+                    <a href="mailto:kontakt@christian-kolbow.de" class="flex items-center p-4 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition">
+                        <span class="mr-4 text-2xl">✉️</span>
+                        <div>
+                            <div class="text-xs text-stone-400 uppercase tracking-widest">E-Mail</div>
+                            <div class="font-bold">kontakt@christian-kolbow.de</div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Google Maps Embed (Rötgesbüttel) -->
+                <div class="rounded-2xl overflow-hidden h-64 border border-stone-700 relative bg-stone-800">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9715.76566412467!2d10.5234!3d52.4215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a5555555555555%3A0x5555555555555555!2sR%C3%B6tgesb%C3%BCttel!5e0!3m2!1sde!2sde!4v1620000000000!5m2!1sde!2sde" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0; filter: grayscale(100%) invert(92%) contrast(83%);" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                    <div class="absolute bottom-0 left-0 right-0 bg-stone-900/90 p-2 text-center text-xs text-stone-400 backdrop-blur-sm">
+                        Rötgesbüttel • Region Gifhorn
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center text-stone-600 text-xs tracking-widest uppercase border-t border-stone-800 pt-8">
+                © 2026 Christian Kolbow
+            </div>
         </div>
-        <div style="font-size: 8px; color: #3f3f46; letter-spacing: 3px; uppercase;">
-            © 2026 // CHRISTIAN KOLBOW // DESIGN_BY_JARVIS
-        </div>
-    </footer>
+    </section>
 
 </body>
 </html>
