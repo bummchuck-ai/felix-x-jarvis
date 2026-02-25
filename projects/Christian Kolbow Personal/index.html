@@ -1,245 +1,266 @@
 <!DOCTYPE html>
-<html lang="de" class="scroll-smooth">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Christian Kolbow | Redner & PV-Experte</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Outfit', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    },
-                    colors: {
-                        stone: {
-                            50: '#fafaf9',
-                            100: '#f5f5f4',
-                            200: '#e7e5e4',
-                            800: '#292524',
-                        },
-                        solar: {
-                            blue: '#0ea5e9', // Sky-500
-                            light: '#f0f9ff', // Sky-50
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <title>Christian Kolbow | PV-Expertise & Freie Reden</title>
     <style>
-        /* Hide Scrollbar for horizontally scrolling areas */
-        .hide-scroll::-webkit-scrollbar {
-            display: none;
+        /* RESET & BASE */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #fafaf9; /* Stone-50 */
+            color: #292524; /* Stone-800 */
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
         }
-        .hide-scroll {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+
+        /* TYPOGRAPHY */
+        h1, h2, h3 { line-height: 1.2; font-weight: 700; color: #1c1917; }
+        h1 { font-size: 3rem; margin-bottom: 1rem; }
+        h2 { font-size: 2.25rem; margin-bottom: 0.75rem; }
+        h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        p { margin-bottom: 1.5rem; color: #57534e; font-size: 1.125rem; }
+        
+        .serif { font-family: "Times New Roman", Times, serif; font-style: italic; }
+        .uppercase { text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.875rem; font-weight: 600; }
+        .text-center { text-align: center; }
+        .text-white { color: white; }
+        .text-amber { color: #d97706; }
+        .text-blue { color: #0284c7; }
+
+        /* HERO SECTION */
+        header {
+            background-color: #1c1917;
+            color: white;
+            padding: 4rem 1.5rem;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            position: relative;
+            background-image: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            z-index: 10;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: transform 0.2s;
+        }
+
+        .btn-primary { background: white; color: #1c1917; }
+        .btn-outline { border: 2px solid white; color: white; }
+        .btn-dark { background: #1c1917; color: white; width: 100%; text-align: center; }
+        .btn-blue { border: 2px solid #0284c7; color: #0284c7; width: 100%; text-align: center; }
+
+        /* SECTIONS */
+        section { padding: 4rem 1.5rem; }
+        
+        .section-header { margin-bottom: 2rem; max-width: 800px; }
+        
+        /* SCROLL CONTAINER */
+        .scroll-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 1.5rem;
+            padding-bottom: 2rem;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+        }
+
+        .card {
+            min-width: 85vw;
+            scroll-snap-align: center;
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e7e5e4;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        @media (min-width: 768px) {
+            .card { min-width: 400px; }
+        }
+
+        .icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+        
+        /* SPECIFIC STYLES */
+        #solar { background: white; }
+        .solar-card { background: #f0f9ff; border-color: #bae6fd; }
+        
+        /* CONTACT */
+        #contact { background: #1c1917; color: white; }
+        #contact p { color: #a8a29e; }
+        .contact-link {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 0.75rem;
+            margin-bottom: 1rem;
+            text-decoration: none;
+            color: white;
+        }
+        .contact-icon { font-size: 1.5rem; margin-right: 1rem; }
+
+        /* MAP */
+        .map-container {
+            height: 300px;
+            background: #292524;
+            border-radius: 1rem;
+            overflow: hidden;
+            margin-top: 2rem;
         }
     </style>
 </head>
-<body class="bg-stone-50 text-stone-800 antialiased">
+<body>
 
-    <!-- HERO: PERSONAL BRAND -->
-    <header class="relative h-[85vh] flex flex-col justify-end p-8 overflow-hidden bg-stone-200">
-        <!-- Placeholder Image Background -->
-        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80')] bg-cover bg-center grayscale opacity-80"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-stone-900/90 via-stone-900/20 to-transparent"></div>
-        
-        <div class="relative z-10 max-w-lg animate-fade-in-up">
-            <span class="text-white/80 uppercase tracking-[0.3em] text-xs font-semibold mb-2 block">Rötgesbüttel</span>
-            <h1 class="text-5xl md:text-7xl text-white font-serif italic mb-4 leading-tight">Christian<br>Kolbow</h1>
-            <p class="text-stone-300 text-lg leading-relaxed max-w-sm mb-8">
-                Zwei Leidenschaften. Ein Mensch.<br>
-                Ihr Begleiter für die emotionalen Momente und die nachhaltige Zukunft.
+    <!-- HERO -->
+    <header>
+        <div class="hero-content">
+            <div class="uppercase text-amber" style="margin-bottom: 0.5rem;">Rötgesbüttel</div>
+            <h1 class="serif" style="color: white;">Christian<br>Kolbow</h1>
+            <p style="color: #e7e5e4;">
+                Ihr Begleiter für emotionale Momente und nachhaltige Energie.
+                Zwei Welten. Ein Ansprechpartner.
             </p>
-            <div class="flex gap-4">
-                <a href="#redner" class="px-6 py-3 bg-white text-stone-900 font-bold rounded-full text-sm hover:bg-stone-200 transition">Freier Redner ↓</a>
-                <a href="#solar" class="px-6 py-3 border border-white text-white font-bold rounded-full text-sm hover:bg-white/10 transition">PV-Experte ↓</a>
+            <div class="hero-buttons">
+                <a href="#redner" class="btn btn-primary">Freier Redner ↓</a>
+                <a href="#solar" class="btn btn-outline">PV-Experte ↓</a>
             </div>
         </div>
     </header>
 
-    <!-- SECTION 1: DER REDNER (Warm, Emotional) -->
-    <section id="redner" class="py-20 bg-stone-50">
-        <div class="px-6 mb-8">
-            <span class="text-amber-600 font-serif italic text-xl">Emotion & Würde</span>
-            <h2 class="text-4xl font-bold text-stone-800 mt-2 mb-4">Der Freie Redner</h2>
-            <p class="text-stone-600 leading-relaxed max-w-md">
-                Ob Abschied oder Neubeginn – ich finde die Worte, die im Herzen bleiben. Individuell, persönlich und ohne steife Floskeln.
-            </p>
+    <!-- REDNER SECTION -->
+    <section id="redner">
+        <div class="section-header">
+            <div class="uppercase text-amber">Emotion & Würde</div>
+            <h2 class="serif">Der Freie Redner</h2>
+            <p>Individuelle Worte für Abschied, Liebe und Neubeginn. Ohne Floskeln, dafür mit viel Herz.</p>
         </div>
 
-        <!-- Horizontal Scroll Container -->
-        <div class="flex overflow-x-auto gap-6 px-6 pb-8 hide-scroll snap-x snap-mandatory">
-            
-            <!-- Card 1: Trauer -->
-            <div class="min-w-[85vw] md:min-w-[400px] snap-center bg-white p-8 rounded-2xl shadow-sm border border-stone-100 flex flex-col justify-between h-[400px]">
+        <div class="scroll-container">
+            <!-- Card 1 -->
+            <div class="card">
                 <div>
-                    <div class="w-12 h-12 bg-stone-100 rounded-full flex items-center justify-center mb-6 text-2xl">🕯️</div>
-                    <h3 class="text-2xl font-serif font-bold mb-3">Trauerfeiern</h3>
-                    <p class="text-stone-500 leading-relaxed">
-                        Ein Abschied, der das Leben feiert. Ich erzähle die Geschichte des Verstorbenen so, wie er war. Authentisch, liebevoll und tröstend für die Hinterbliebenen.
-                    </p>
-                </div>
-                <div class="mt-6 pt-6 border-t border-stone-100">
-                    <span class="text-xs uppercase tracking-widest text-stone-400">Begleitung in schweren Stunden</span>
+                    <span class="icon">🕯️</span>
+                    <h3 class="serif">Trauerfeiern</h3>
+                    <p>Ein würdevoller Abschied, der das Leben feiert. Authentisch und tröstend für die Hinterbliebenen.</p>
                 </div>
             </div>
-
-            <!-- Card 2: Trauung -->
-            <div class="min-w-[85vw] md:min-w-[400px] snap-center bg-white p-8 rounded-2xl shadow-sm border border-stone-100 flex flex-col justify-between h-[400px]">
+            <!-- Card 2 -->
+            <div class="card">
                 <div>
-                    <div class="w-12 h-12 bg-amber-50 rounded-full flex items-center justify-center mb-6 text-2xl">💍</div>
-                    <h3 class="text-2xl font-serif font-bold mb-3">Freie Trauungen</h3>
-                    <p class="text-stone-500 leading-relaxed">
-                        Eure Liebe, eure Regeln. Eine Zeremonie, die zu 100% zu euch passt. Ob im Garten, in der Scheune oder am See – ich mache euren Moment unvergesslich.
-                    </p>
-                </div>
-                <div class="mt-6 pt-6 border-t border-stone-100">
-                    <span class="text-xs uppercase tracking-widest text-stone-400">Ja-Wort mit Herz</span>
+                    <span class="icon">💍</span>
+                    <h3 class="serif">Freie Trauungen</h3>
+                    <p>Eure Liebe, eure Regeln. Eine Zeremonie, die zu 100% zu euch passt.</p>
                 </div>
             </div>
-
-            <!-- Card 3: Willkommen -->
-            <div class="min-w-[85vw] md:min-w-[400px] snap-center bg-white p-8 rounded-2xl shadow-sm border border-stone-100 flex flex-col justify-between h-[400px]">
+            <!-- Card 3 -->
+            <div class="card">
                 <div>
-                    <div class="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center mb-6 text-2xl">🌱</div>
-                    <h3 class="text-2xl font-serif font-bold mb-3">Willkommensfeste</h3>
-                    <p class="text-stone-500 leading-relaxed">
-                        Für die kleinen Wunder. Eine weltliche Alternative zur Taufe, um das neue Leben im Kreis der Familie und Freunde willkommen zu heißen.
-                    </p>
-                </div>
-                <div class="mt-6 pt-6 border-t border-stone-100">
-                    <span class="text-xs uppercase tracking-widest text-stone-400">Start ins Leben</span>
+                    <span class="icon">🌱</span>
+                    <h3 class="serif">Willkommensfeste</h3>
+                    <p>Für die kleinen Wunder. Eine weltliche Alternative zur Taufe.</p>
                 </div>
             </div>
-
         </div>
-
-        <div class="px-6 mt-4">
-            <a href="#contact" class="block w-full py-4 bg-stone-800 text-white text-center rounded-xl font-bold tracking-wide hover:bg-stone-900 transition shadow-lg shadow-stone-200">
-                Termin anfragen
-            </a>
-        </div>
+        
+        <a href="#contact" class="btn btn-dark" style="margin-top: 1rem;">Termin anfragen</a>
     </section>
 
-    <!-- SECTION 2: IEE SOLAR (Clean, Tech) -->
-    <section id="solar" class="py-20 bg-white relative overflow-hidden">
-        <!-- Decoration -->
-        <div class="absolute top-0 right-0 w-64 h-64 bg-sky-50 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
-
-        <div class="px-6 mb-8 relative z-10">
-            <span class="text-sky-600 font-sans font-bold text-sm uppercase tracking-widest">IEE Solar Gifhorn</span>
-            <h2 class="text-4xl font-bold text-slate-900 mt-2 mb-4">Der PV-Experte</h2>
-            <p class="text-slate-500 leading-relaxed max-w-md">
-                Unabhängig. Regional. Ehrlich. Ich plane Ihre Photovoltaik-Anlage so, dass sie sich für Sie lohnt – nicht nur für den Verkäufer.
-            </p>
+    <!-- SOLAR SECTION -->
+    <section id="solar">
+        <div class="section-header">
+            <div class="uppercase text-blue">IEE Solar Gifhorn</div>
+            <h2>Der PV-Experte</h2>
+            <p>Unabhängige Planung für Gifhorn, Wolfsburg und Braunschweig. Ehrliche Technik, die sich lohnt.</p>
         </div>
 
-        <!-- Horizontal Scroll Container -->
-        <div class="flex overflow-x-auto gap-6 px-6 pb-8 hide-scroll snap-x snap-mandatory relative z-10">
-            
-            <!-- Card 1: Planung -->
-            <div class="min-w-[85vw] md:min-w-[400px] snap-center bg-sky-50 p-8 rounded-2xl border border-sky-100 flex flex-col justify-between h-[350px]">
+        <div class="scroll-container">
+            <!-- Card 1 -->
+            <div class="card solar-card">
                 <div>
-                    <h3 class="text-xl font-bold text-sky-900 mb-2">Ehrliche Planung</h3>
-                    <div class="w-12 h-1 bg-sky-500 mb-4 rounded-full"></div>
-                    <p class="text-slate-600">
-                        Keine Pauschalangebote. Wir analysieren Ihr Dach, Ihren Verbrauch und Ihre Wünsche. Sie bekommen eine realistische Wirtschaftlichkeitsberechnung.
-                    </p>
-                </div>
-                <div class="flex justify-end">
-                    <span class="text-6xl font-black text-sky-200/50">01</span>
+                    <h3 class="text-blue">Ehrliche Planung</h3>
+                    <p>Keine Pauschalangebote. Wir analysieren Ihr Dach und berechnen, was sich wirklich rentiert.</p>
                 </div>
             </div>
-
-            <!-- Card 2: Region -->
-            <div class="min-w-[85vw] md:min-w-[400px] snap-center bg-sky-50 p-8 rounded-2xl border border-sky-100 flex flex-col justify-between h-[350px]">
+            <!-- Card 2 -->
+            <div class="card solar-card">
                 <div>
-                    <h3 class="text-xl font-bold text-sky-900 mb-2">Hier zu Hause</h3>
-                    <div class="w-12 h-1 bg-sky-500 mb-4 rounded-full"></div>
-                    <p class="text-slate-600">
-                        Mein Fokus liegt auf <strong>Gifhorn, Wolfsburg und Braunschweig</strong>. Ich bin kein Callcenter-Agent, sondern Ihr Nachbar aus Rötgesbüttel. Kurze Wege, schnelle Hilfe.
-                    </p>
-                </div>
-                <div class="flex justify-end">
-                    <span class="text-6xl font-black text-sky-200/50">02</span>
+                    <h3 class="text-blue">Hier zu Hause</h3>
+                    <p>Ihr Ansprechpartner direkt aus Rötgesbüttel. Kurze Wege, schnelle Hilfe.</p>
                 </div>
             </div>
-
-            <!-- Card 3: Technik -->
-            <div class="min-w-[85vw] md:min-w-[400px] snap-center bg-sky-50 p-8 rounded-2xl border border-sky-100 flex flex-col justify-between h-[350px]">
+            <!-- Card 3 -->
+            <div class="card solar-card">
                 <div>
-                    <h3 class="text-xl font-bold text-sky-900 mb-2">Top Technik</h3>
-                    <div class="w-12 h-1 bg-sky-500 mb-4 rounded-full"></div>
-                    <p class="text-slate-600">
-                        IEE Solar verbaut nur Komponenten, denen wir vertrauen. Langlebige Module, intelligente Speicher und robuste Wechselrichter für maximale Unabhängigkeit.
-                    </p>
-                </div>
-                <div class="flex justify-end">
-                    <span class="text-6xl font-black text-sky-200/50">03</span>
+                    <h3 class="text-blue">Top Technik</h3>
+                    <p>Langlebige Module und intelligente Speicher von IEE Solar.</p>
                 </div>
             </div>
-
         </div>
 
-        <div class="px-6 mt-4 relative z-10">
-            <a href="#contact" class="block w-full py-4 border-2 border-sky-900 text-sky-900 text-center rounded-xl font-bold tracking-wide hover:bg-sky-900 hover:text-white transition">
-                Beratung buchen
-            </a>
-        </div>
+        <a href="#contact" class="btn btn-blue" style="margin-top: 1rem;">Beratung buchen</a>
     </section>
 
-    <!-- CONTACT & MAP -->
-    <section id="contact" class="py-20 bg-stone-900 text-white">
-        <div class="max-w-4xl mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-serif italic mb-2">Lassen Sie uns reden.</h2>
-                <p class="text-stone-400">Ob PV-Projekt oder Lebensfeier – ich bin für Sie da.</p>
-            </div>
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="text-center section-header" style="margin: 0 auto 3rem auto;">
+            <h2 class="serif" style="color: white;">Kontakt</h2>
+            <p>Lassen Sie uns sprechen.</p>
+        </div>
 
-            <!-- Contact Grid -->
-            <div class="grid md:grid-cols-2 gap-12 mb-12">
-                <div class="space-y-6">
-                    <a href="tel:+49123456789" class="flex items-center p-4 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition">
-                        <span class="mr-4 text-2xl">📞</span>
-                        <div>
-                            <div class="text-xs text-stone-400 uppercase tracking-widest">Telefon</div>
-                            <div class="font-bold">+49 (0) 123 456 789</div>
-                        </div>
-                    </a>
-                    <a href="mailto:kontakt@christian-kolbow.de" class="flex items-center p-4 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition">
-                        <span class="mr-4 text-2xl">✉️</span>
-                        <div>
-                            <div class="text-xs text-stone-400 uppercase tracking-widest">E-Mail</div>
-                            <div class="font-bold">kontakt@christian-kolbow.de</div>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Google Maps Embed (Rötgesbüttel) -->
-                <div class="rounded-2xl overflow-hidden h-64 border border-stone-700 relative bg-stone-800">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9715.76566412467!2d10.5234!3d52.4215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a5555555555555%3A0x5555555555555555!2sR%C3%B6tgesb%C3%BCttel!5e0!3m2!1sde!2sde!4v1620000000000!5m2!1sde!2sde" 
-                        width="100%" 
-                        height="100%" 
-                        style="border:0; filter: grayscale(100%) invert(92%) contrast(83%);" 
-                        allowfullscreen="" 
-                        loading="lazy">
-                    </iframe>
-                    <div class="absolute bottom-0 left-0 right-0 bg-stone-900/90 p-2 text-center text-xs text-stone-400 backdrop-blur-sm">
-                        Rötgesbüttel • Region Gifhorn
-                    </div>
-                </div>
+        <a href="tel:+49123456789" class="contact-link">
+            <span class="contact-icon">📞</span>
+            <div>
+                <div class="uppercase" style="font-size: 0.7rem; color: #a8a29e;">Telefon</div>
+                <div style="font-weight: 700;">+49 (0) 123 456 789</div>
             </div>
+        </a>
 
-            <div class="text-center text-stone-600 text-xs tracking-widest uppercase border-t border-stone-800 pt-8">
-                © 2026 Christian Kolbow
+        <a href="mailto:kontakt@christian-kolbow.de" class="contact-link">
+            <span class="contact-icon">✉️</span>
+            <div>
+                <div class="uppercase" style="font-size: 0.7rem; color: #a8a29e;">E-Mail</div>
+                <div style="font-weight: 700;">kontakt@christian-kolbow.de</div>
             </div>
+        </a>
+
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9715.76566412467!2d10.5234!3d52.4215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a5555555555555%3A0x5555555555555555!2sR%C3%B6tgesb%C3%BCttel!5e0!3m2!1sde!2sde!4v1620000000000!5m2!1sde!2sde" 
+                width="100%" 
+                height="100%" 
+                style="border:0; filter: grayscale(100%) invert(92%) contrast(83%);" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+
+        <div class="text-center" style="margin-top: 3rem; font-size: 0.8rem; color: #57534e;">
+            © 2026 CHRISTIAN KOLBOW
         </div>
     </section>
 
