@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Einpoliger Stromlaufplan (Single Line) - IEE Solar</title>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <style>
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; padding: 40px; color: #333; max-width: 210mm; margin: 0 auto; }
+        .header { border-bottom: 2px solid #000; padding-bottom: 20px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: flex-end; }
+        .logo { font-size: 24px; font-weight: bold; color: #d97706; text-transform: uppercase; }
+        .title { font-size: 18px; font-weight: bold; text-align: right; }
+        .meta { font-size: 12px; color: #666; margin-top: 5px; text-align: right; }
+        
+        h2 { font-size: 16px; border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-top: 30px; text-transform: uppercase; color: #555; }
+        
+        .diagram-container { border: 1px solid #ccc; padding: 20px; border-radius: 4px; margin-bottom: 30px; text-align: center; }
+        
+        .footer { margin-top: 50px; font-size: 10px; color: #999; text-align: center; border-top: 1px solid #eee; padding-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div>
+            <div class="logo">IEE Solar</div>
+            <div style="font-size: 12px; margin-top: 5px;">Christian Kolbow<br>Hohes Feld 5a<br>38531 Rötgesbüttel</div>
+        </div>
+        <div>
+            <div class="title">Einpoliger Stromlaufplan (Übersicht)</div>
+            <div class="meta">Projekt: 10,35 kWp PV + 18,25 kWh Speicher<br>Netz: BS|Netz<br>Datum: 27.02.2026</div>
+        </div>
+    </div>
+
+    <h2>Anlagenübersicht</h2>
+    <div class="diagram-container">
+        <pre class="mermaid">
+        graph TD
+            HAK((HAK)) --- SLS[SLS-Schalter]
+            SLS --- Z1[Zweirichtungszähler eHZ]
+            Z1 --- SM[Smart Meter / EnFluRi]
+            
+            SM --- UV[Hausverbraucher]
+            SM --- LS[LS-Schalter 3-pol.]
+            
+            LS --- WR[Hybrid-WR 10kW]
+            
+            subgraph DC
+                WR --- GAK1[GAK String 1]
+                WR --- GAK2[GAK String 2]
+                GAK1 --- PV1[PV 1]
+                GAK2 --- PV2[PV 2]
+                
+                WR --- BAT[Batterie 18,25 kWh]
+            end
+        </pre>
+    </div>
+
+    <h2>Komponenten-Legende</h2>
+    <table style="width: 100%; font-size: 12px; border-collapse: collapse;">
+        <tr style="background: #f9f9f9; text-align: left;">
+            <th style="padding: 8px;">Kürzel</th>
+            <th style="padding: 8px;">Beschreibung</th>
+            <th style="padding: 8px;">Typ / Wert</th>
+        </tr>
+        <tr>
+            <td style="padding: 8px;">Z1</td>
+            <td style="padding: 8px;">Zähleinrichtung</td>
+            <td style="padding: 8px;">Zweirichtungszähler (Bezug/Lieferung)</td>
+        </tr>
+        <tr>
+            <td style="padding: 8px;">WR</td>
+            <td style="padding: 8px;">Wechselrichter</td>
+            <td style="padding: 8px;">10 kVA Hybrid (3-phasig)</td>
+        </tr>
+        <tr>
+            <td style="padding: 8px;">PV</td>
+            <td style="padding: 8px;">PV-Generator</td>
+            <td style="padding: 8px;">10,35 kWp (2 MPPT)</td>
+        </tr>
+        <tr>
+            <td style="padding: 8px;">BAT</td>
+            <td style="padding: 8px;">Speichersystem</td>
+            <td style="padding: 8px;">18,25 kWh LiFePO4</td>
+        </tr>
+    </table>
+
+    <div class="footer">
+        Erstellt von Jarvis für IEE Solar (Christian Kolbow) // Einpolige Darstellung
+    </div>
+
+</body>
+</html>

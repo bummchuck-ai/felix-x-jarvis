@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Allpoliger Stromlaufplan (3-Phasig) - IEE Solar</title>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <style>
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; padding: 40px; color: #333; max-width: 297mm; margin: 0 auto; } /* Querformat A4 */
+        .header { border-bottom: 2px solid #000; padding-bottom: 20px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: flex-end; }
+        .logo { font-size: 24px; font-weight: bold; color: #d97706; text-transform: uppercase; }
+        .title { font-size: 18px; font-weight: bold; text-align: right; }
+        .meta { font-size: 12px; color: #666; margin-top: 5px; text-align: right; }
+        
+        h2 { font-size: 16px; border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-top: 30px; text-transform: uppercase; color: #555; }
+        
+        .diagram-container { border: 1px solid #ccc; padding: 20px; border-radius: 4px; margin-bottom: 30px; text-align: center; overflow-x: auto; }
+        
+        /* Simulating 3-phase lines visually in CSS grid for clarity if mermaid is limited */
+        .phase-legend { display: flex; gap: 20px; font-size: 10px; margin-bottom: 10px; justify-content: center;}
+        .phase-legend span { padding: 2px 8px; border-radius: 3px; color: white; font-weight: bold; }
+        .l1 { background: #8B4513; } /* Brown */
+        .l2 { background: #000000; } /* Black */
+        .l3 { background: #808080; } /* Grey */
+        .n { background: #0000FF; }  /* Blue */
+        .pe { background: #00FF00; border: 1px solid #ccc; color: #333; } /* Green/Yellow */
+
+        .footer { margin-top: 50px; font-size: 10px; color: #999; text-align: center; border-top: 1px solid #eee; padding-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div>
+            <div class="logo">IEE Solar</div>
+            <div style="font-size: 12px; margin-top: 5px;">Christian Kolbow<br>Hohes Feld 5a<br>38531 Rötgesbüttel</div>
+        </div>
+        <div>
+            <div class="title">Allpoliger Stromlaufplan (3-Phasig)</div>
+            <div class="meta">Projekt: 10,35 kWp PV + 18,25 kWh Speicher<br>Netz: BS|Netz (TN-S System)<br>Datum: 27.02.2026</div>
+        </div>
+    </div>
+
+    <div class="phase-legend">
+        <span class="l1">L1 (Braun)</span>
+        <span class="l2">L2 (Schwarz)</span>
+        <span class="l3">L3 (Grau)</span>
+        <span class="n">N (Blau)</span>
+        <span class="pe">PE (Grün/Gelb)</span>
+    </div>
+
+    <div class="diagram-container">
+        <!-- Using Mermaid to depict the topology, noting specific wiring details -->
+        <pre class="mermaid">
+        graph TD
+            %% Netzanschluss
+            subgraph HAK [Hausanschlusskasten]
+                Grid((Netz L1/L2/L3/PEN))
+                PEN_Split[PEN Trennung -> N + PE]
+            end
+
+            subgraph Zählerschrank [Zählerschrank nach VDE 4100]
+                SLS[SLS E-Schalter 3-polig]
+                Z1[eHZ Zweirichtungszähler]
+                
+                subgraph NAR [Netzseitiger Anschlussraum]
+                    SLS
+                end
+                
+                subgraph AR [Anlagenseitiger Anschlussraum]
+                    Klemmstein[Hauptleitungsabzweigklemme]
+                    EnFluRi[Smart Meter DTSU666]
+                    
+                    subgraph PV_Pfad [Einspeisepfad]
+                        RCBO[FI/LS B20A 300mA<br>4-polig]
+                    end
+                    
+                    subgraph Haus_Pfad [Hausverbrauch]
+                        RCD_Haus[RCD 40mA]
+                        LS_Haus[LS-Schalter]
+                    end
+                end
+            end
+
+            subgraph WR_System [Wechselrichter & Speicher]
+                WR[Hybrid-Wechselrichter 10kW<br>3-Phasig + N + PE]
+                GAK[GAK DC-Überspannungsschutz]
+                BAT[Batterie 18,25 kWh<br>DC-Kopplung]
+                PV_Gen[PV-Generator<br>10,35 kWp]
+            end
+
+            %% Connections
+            Grid ==> PEN_Split
+            PEN_Split == L1/L2/L3 ==> SLS
+            PEN_Split == N ==> Z1
+            PEN_Split == PE ==> PAS((Poti-Schiene))
+            
+            SLS == L1/L2/L3 ==> Z1
+            Z1 == L1/L2/L3/N ==> Klemmstein
+            
+            Klemmstein == L1/L2/L3/N ==> EnFluRi
+            EnFluRi == L1/L2/L3/N ==> RCBO
+            
+            RCBO == 5x6mm² ==> WR
+            
+            PV_Gen -- 2x String DC --> GAK
+            GAK -- DC --> WR
+            BAT -- DC Hochvolt --> WR
+            
+            Klemmstein == L1/L2/L3/N ==> RCD_Haus
+            RCD_Haus ==> LS_Haus
+            
+            WR -. PE 16mm² .-> PAS
+        </pre>
+    </div>
+
+    <h2>Detaillierte Verdrahtung</h2>
+    <div style="font-size: 12px; font-family: monospace; background: #f4f4f4; padding: 15px; border-left: 4px solid #d97706;">
+        <strong>1. Zählerplatz (Drehstrom):</strong><br>
+        - L1, L2, L3 über SLS-Schalter (z.B. 35A/50A) zum Zähler.<br>
+        - N über N-Trennklemme.<br>
+        - Verdrahtung intern min. 10mm² (besser 16mm²).<br><br>
+        
+        <strong>2. Smart Meter (EnFluRi):</strong><br>
+        - Direktmessend (bis 63A) oder Wandlermessung.<br>
+        - Position: Direkt NACH dem Zähler, VOR der Aufteilung Haus/PV.<br>
+        - Kommunikation: RS485 (A/B) geschirmt zum Wechselrichter (Modbus).<br><br>
+        
+        <strong>3. Wechselrichter Zuleitung (AC):</strong><br>
+        - Kabel: NYM-J 5x6mm² oder 5x4mm² (je nach Länge).<br>
+        - L1 an L1, L2 an L2, L3 an L3 (Rechtsdrehfeld beachten!).<br>
+        - N an N, PE an PE.<br>
+        - Absicherung: 3-polig B20A oder C16A (Herstellerangaben beachten).<br><br>
+        
+        <strong>4. Potentialausgleich (PE):</strong><br>
+        - Wechselrichter-Gehäuse und Montagegestell PV min. 16mm² an Haupterdungsschiene (PAS).
+    </div>
+
+    <div class="footer">
+        Erstellt von Jarvis für IEE Solar (Christian Kolbow) // Allpolige Darstellung
+    </div>
+
+</body>
+</html>
