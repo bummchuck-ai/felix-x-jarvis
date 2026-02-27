@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: SafeSpace</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #0f172a; color: #f8fafc; margin: 0; padding: 0; line-height: 1.6; }
+        .container { max-width: 600px; margin: 0 auto; padding: 40px 20px; }
+        h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; background: linear-gradient(to right, #a78bfa, #f472b6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        h2 { font-size: 1.5rem; margin-top: 40px; margin-bottom: 20px; color: #e2e8f0; }
+        p { color: #94a3b8; font-size: 1.1rem; margin-bottom: 20px; }
+        
+        .card { background: #1e293b; padding: 25px; border-radius: 16px; margin-bottom: 20px; border: 1px solid #334155; }
+        .feature-title { font-weight: 700; color: #fff; font-size: 1.2rem; margin-bottom: 5px; display: flex; align-items: center; }
+        .icon { margin-right: 10px; font-size: 1.5rem; }
+        
+        .btn { display: block; width: 100%; padding: 18px; background: linear-gradient(135deg, #8b5cf6, #ec4899); color: white; text-align: center; text-decoration: none; border-radius: 12px; font-weight: 700; font-size: 1.1rem; margin-top: 40px; box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3); transition: transform 0.2s; border: none; cursor: pointer; }
+        .btn:active { transform: scale(0.98); }
+
+        .question { margin-bottom: 30px; }
+        label { display: block; margin-bottom: 10px; font-weight: 600; color: #cbd5e1; }
+        input[type="text"], textarea { width: 100%; padding: 15px; border-radius: 8px; border: 1px solid #475569; background: #0f172a; color: white; font-size: 1rem; box-sizing: border-box; }
+        textarea { height: 100px; resize: vertical; }
+        
+        .footer { text-align: center; margin-top: 60px; color: #64748b; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Project: SafeSpace</h1>
+        <p>Wir arbeiten an einer Idee. Für dich. Für uns alle. <br>Aber bevor wir eine Zeile Code schreiben, brauchen wir deine Ehrlichkeit.</p>
+
+        <div class="card">
+            <p style="margin:0; color: #fff; font-style: italic;">"Stell dir vor, du hast eine App, die wie eine beste Freundin in deiner Tasche ist. Die dir den Rücken freihält, wenn es dunkel wird, oder dich rettet, wenn ein Date unangenehm wird."</p>
+        </div>
+
+        <h2>Was würdest du wirklich nutzen?</h2>
+        
+        <form>
+            <div class="question">
+                <div class="card">
+                    <div class="feature-title"><span class="icon">📞</span> The Fake Call</div>
+                    <p>Ein Klick, und dein Handy klingelt 10 Sekunden später. "Sorry, mein Vater ruft an, ich muss los." Der perfekte Exit.</p>
+                    <label><input type="checkbox" name="feature" value="fakecall"> Würde ich nutzen</label>
+                </div>
+
+                <div class="card">
+                    <div class="feature-title"><span class="icon">🛡️</span> Safe Havens</div>
+                    <p>Eine Karte mit Orten (Cafés, Shops), die noch offen sind und wo du sicher bist, wenn du dich draußen unwohl fühlst.</p>
+                    <label><input type="checkbox" name="feature" value="safehaven"> Würde ich nutzen</label>
+                </div>
+
+                <div class="card">
+                    <div class="feature-title"><span class="icon">👯</span> Sister Radar</div>
+                    <p>Teile deinen Live-Standort temporär mit Freundinnen, wenn du nachts nach Hause läufst.</p>
+                    <label><input type="checkbox" name="feature" value="radar"> Würde ich nutzen</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <label>Was ist die EINE Situation in deinem Alltag, wo du dir mehr Sicherheit oder Support wünschst?</label>
+                <textarea placeholder="Ehrlich gesagt..."></textarea>
+            </div>
+
+            <a href="https://wa.me/?text=Hey%20Constanze,%20hier%20ist%20mein%20Feedback%20zur%20App-Idee:..." class="btn">Feedback an Constanze senden 💌</a>
+            <p style="text-align: center; font-size: 0.8rem; margin-top: 10px;">(Öffnet WhatsApp)</p>
+        </form>
+
+        <div class="footer">
+            Ein Projekt von Felix & Jarvis. <br>Mission: 01.04.2026
+        </div>
+    </div>
+
+</body>
+</html>
