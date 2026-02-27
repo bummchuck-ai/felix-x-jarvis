@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Stromlaufplan IEE Solar</title>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <style>
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; padding: 40px; color: #333; max-width: 210mm; margin: 0 auto; }
+        .header { border-bottom: 2px solid #000; padding-bottom: 20px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: flex-end; }
+        .logo { font-size: 24px; font-weight: bold; color: #d97706; text-transform: uppercase; }
+        .title { font-size: 18px; font-weight: bold; text-align: right; }
+        .meta { font-size: 12px; color: #666; margin-top: 5px; text-align: right; }
+        
+        h2 { font-size: 16px; border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-top: 30px; text-transform: uppercase; color: #555; }
+        
+        .data-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; }
+        .data-item { background: #f9f9f9; padding: 15px; border-radius: 4px; border: 1px solid #eee; }
+        .label { font-size: 10px; text-transform: uppercase; color: #888; display: block; margin-bottom: 5px; }
+        .value { font-size: 14px; font-weight: bold; }
+
+        .diagram-container { border: 1px solid #ccc; padding: 20px; border-radius: 4px; margin-bottom: 30px; text-align: center; }
+        
+        .footer { margin-top: 50px; font-size: 10px; color: #999; text-align: center; border-top: 1px solid #eee; padding-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div>
+            <div class="logo">IEE Solar</div>
+            <div style="font-size: 12px; margin-top: 5px;">Christian Kolbow<br>Hohes Feld 5a<br>38531 Rötgesbüttel</div>
+        </div>
+        <div>
+            <div class="title">Übersichtsschaltbild (Single Line Diagram)</div>
+            <div class="meta">Projekt: PV-Anlage 10,35 kWp + Speicher<br>Netzbetreiber: BS|Netz<br>Datum: 27.02.2026</div>
+        </div>
+    </div>
+
+    <h2>1. Technische Daten</h2>
+    <div class="data-grid">
+        <div class="data-item">
+            <span class="label">PV-Generator (DC)</span>
+            <span class="value">10,35 kWp</span>
+            <div style="font-size: 11px; color: #666; margin-top: 3px;">Aufteilung: 2 MPPT Tracker</div>
+        </div>
+        <div class="data-item">
+            <span class="label">Batteriespeicher (DC)</span>
+            <span class="value">18,25 kWh</span>
+            <div style="font-size: 11px; color: #666; margin-top: 3px;">Technologie: LiFePO4 (Hochvolt)</div>
+        </div>
+        <div class="data-item">
+            <span class="label">Wechselrichter (AC)</span>
+            <span class="value">10 kVA Hybrid</span>
+            <div style="font-size: 11px; color: #666; margin-top: 3px;">Anschluss: 3-phasig (400V)</div>
+        </div>
+        <div class="data-item">
+            <span class="label">Netzanschluss</span>
+            <span class="value">VDE-AR-N 4105</span>
+            <div style="font-size: 11px; color: #666; margin-top: 3px;">Messkonzept: Überschusseinspeisung</div>
+        </div>
+    </div>
+
+    <h2>2. Schaltplan (Topologie)</h2>
+    <div class="diagram-container">
+        <pre class="mermaid">
+        graph TD
+            Grid((Netzanschluss<br>HAK)) --- SLS[SLS-Schalter]
+            SLS --- Z1[Zweirichtungszähler<br>Bezug / Lieferung]
+            Z1 --- SmartMeter[EnFluRi / Smart Meter<br>RS485 zum WR]
+            
+            SmartMeter --- UV[Hausverteilung<br>Verbraucher]
+            SmartMeter --- FI_LS[FI/LS 3-polig<br>Absicherung WR]
+            
+            FI_LS --- WR[Hybrid-Wechselrichter<br>10 kVA]
+            
+            subgraph DC-Seite
+                PV1[PV String 1<br>MPPT A] --> GAK1[DC-SPD]
+                PV2[PV String 2<br>MPPT B] --> GAK2[DC-SPD]
+                GAK1 --> WR
+                GAK2 --> WR
+                
+                BAT[Batteriespeicher<br>18,25 kWh] <--> BMS[BMS]
+                BMS <--> WR
+            end
+        </pre>
+    </div>
+
+    <h2>3. Hinweise zur Installation</h2>
+    <ul style="font-size: 12px; line-height: 1.6;">
+        <li><strong>Zählerplatz:</strong> Nach TAB BS|Netz (VDE-AR-N 4100). Zählerplatz muss für Dauerbetrieb ausgelegt sein (10mm² Verdrahtung, SLS im NAR).</li>
+        <li><strong>Überspannungsschutz (SPD):</strong> AC-seitig (Typ 1+2 im Zählerschrank) und DC-seitig (vor dem Wechselrichter) erforderlich.</li>
+        <li><strong>Kommunikation:</strong> Smart Meter muss direkt hinter dem Zähler (Netzverknüpfungspunkt) sitzen, um Hausverbrauch und Einspeisung korrekt zu erfassen.</li>
+        <li><strong>Speicher:</strong> DC-gekoppeltes System zur Maximierung des Eigenverbrauchs. Notstromfunktion optional (hier nicht dargestellt).</li>
+    </ul>
+
+    <div class="footer">
+        Erstellt von Jarvis für IEE Solar (Christian Kolbow) // Dokument ID: IEE-2026-02-27-001
+    </div>
+
+</body>
+</html>
